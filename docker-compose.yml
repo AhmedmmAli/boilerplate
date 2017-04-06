@@ -1,0 +1,21 @@
+web:
+  image: llama052/nginx-php-laravel
+  ports:
+    - "8683:80"
+  links:
+    - db:DB
+  volumes:
+    - ~/boilerplate:/var/www/html
+  environment:
+      WEBROOT: /var/www/html/public
+db:
+  image: mysql/mysql-server:5.7
+  ports:
+    - "3306:3306"
+  volumes:
+    - ~/mysqldata:/var/lib/mysql
+  environment:
+    MYSQL_ROOT_PASSWORD: root
+    MYSQL_USER: root
+    MYSQL_PASSWORD: root
+    MYSQL_DATABASE: boilerplatetest
