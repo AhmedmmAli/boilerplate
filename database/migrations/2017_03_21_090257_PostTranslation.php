@@ -19,7 +19,6 @@ class PostTranslation extends Migration
               $table->integer('posts_id')->unsigned();
               $table->string('text');
               $table->string('locale')->index();
-
               $table->unique(['posts_id','locale']);
               $table->foreign('posts_id')->references('id')->on('posts')->onDelete('cascade');
         });
